@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Вставка на страницу панорам Яндекса</title>
+    <meta charset="utf-8">
+
+    <style>
+        html,
+        body,
+        .player {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .player {
+            height: 100%;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        #map {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            /* Ширина карты */
+            height: 200px;
+            /* Высота карты */
+            z-index: 9999;
+            /* Поверх других элементов */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            /* Добавлен эффект при изменении transform и opacity */
+            transform-origin: bottom right;
+            /* Устанавливаем точку преобразования в правый нижний угол */
+            opacity: 0.8;
+            /* Устанавливаем начальную прозрачность */
+        }
+
+        #map:hover {
+            transform: scale(2);
+            /* Увеличиваем карту при наведении */
+            opacity: 1;
+            /* Устанавливаем полную прозрачность при наведении */
+        }
+    </style>
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f5911101-ce6c-49d5-b646-c9aac81daf2b"></script>
+    <script src="panorama_custom.js"></script>
+    <div id="map"></div>
+</head>
+
+<body>
+    <div id="player1" class="player"></div>
+    <div id="toast" class="toast">ПАНОРАМА НЕ НАЙДЕНА! ПАЕРЕЗАГРУЗИТЕ СТРАНИЦУ!</div>
+</body>
+
+</html>
