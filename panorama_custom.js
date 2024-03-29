@@ -58,6 +58,6 @@ ymaps.ready(function () {
     );
 });
 function search() {
-    randomLat = 59.962976 + (Math.random() - 0.5) * 0.1; // Где 0.1 - широта диапазона
-    randomLng = 30.288935 + (Math.random() - 0.5) * 0.1; // Где 0.1 - долгота диапазона
+    randomLat = 59.944140 + (Math.random() - 0.5) * 0.1; // Где 0.1 - широта диапазона
+    randomLng = 30.359873 + (Math.random() - 0.5) * 0.1; // Где 0.1 - долгота диапазона
 }
