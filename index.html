@@ -55,11 +55,23 @@
             opacity: 1;
             /* Устанавливаем полную прозрачность при наведении */
         }
+        .marker-button,
+        .panorama-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10000; /* Установите высокий z-index, чтобы кнопка была поверх панорамы */
+        }
+        .panorama-button {
+            top: 50px; /* Сдвигаем вниз, чтобы кнопки не находились друг над другом */
+        }
     </style>
 
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f5911101-ce6c-49d5-b646-c9aac81daf2b"></script>
     <script src="panorama_custom.js"></script>
     <div id="map"></div>
+    <button class="marker-button" onclick="addMarker(myMap)">Проверка местоположения!</button>
+    <button class="panorama-button" onclick="loadNewPanorama()">Перейти к следующей панораме!</button>
 </head>
 
 <body>

@@ -1,15 +1,19 @@
 var randomLat;
 var randomLng;
+var myMap;
 
 function createPlayer(panoramas) {
     // Убеждаемся, что найдена хотя бы одна панорама.
     if (panoramas.length > 0) {
+        // Удаляем существующий плеер, если он есть
+        var existingPlayer = document.getElementById('player1');
+        if (existingPlayer) {
+            existingPlayer.innerHTML = ''; // Очищаем содержимое элемента с ID 'player1'
+        }
+
         // Создаем плеер с одной из полученных панорам.
         var player = new ymaps.panorama.Player(
             'player1',
-            // Панорамы в ответе отсортированы по расстоянию
-            // от переданной в panorama.locate точки. Выбираем первую,
-            // она будет ближайшей.
             panoramas[0],
             { controls: ['zoomControl'], direction: [256, 16], streets: [], suppressMapOpenBlock: true }
         );
@@ -30,12 +34,9 @@ function createPlayer(panoramas) {
 ymaps.ready(function () {
     // Для начала проверим, поддерживает ли плеер браузер пользователя.
     myMap = new ymaps.Map('map', {
-        /**
-         * When initializing the map, you must specify
-         * its center and the zoom factor.
-         */
-        center: [55.76, 37.64], // Moscow
-        zoom: 10
+        
+        center: [59.944140, 30.359873 ], 
+        zoom: 10, 
     }, {
         searchControlProvider: 'yandex#search'
     });
@@ -46,8 +47,10 @@ ymaps.ready(function () {
     }
 
     search()
-
-    // Ищем панораму в переданной точке.
+    loadNewPanorama()
+});
+function loadNewPanorama() {
+    search()
     ymaps.panorama.locate([randomLat, randomLng]).done(
         function (panoramas) {
             createPlayer(panoramas);
@@ -56,8 +59,16 @@ ymaps.ready(function () {
             alert(error.message);
         }
     );
-});
+}
+
 function search() {
-    randomLat = 59.962976 + (Math.random() - 0.5) * 0.1; // Где 0.1 - широта диапазона
-    randomLng = 30.288935 + (Math.random() - 0.5) * 0.1; // Где 0.1 - долгота диапазона
+   randomLat = 59.944140 + (Math.random() - 0.5) * 0.2; // Где 0.2 - широта диапазона
+   randomLng = 30.359873 + (Math.random() - 0.5) * 0.15; // Где 0.15 - долгота диапазона
+}
+function addMarker(map) {
+    var coords = [randomLat, randomLng];
+    var marker = new ymaps.Placemark(coords, {
+        balloonContent: 'Метка'
+    });
+    map.geoObjects.add(marker);
 }
