@@ -23,11 +23,12 @@ function createPlayer(panoramas) {
             player.setPanorama(panorama);
         });
     } else {
+        loadNewPanorama()
         var toast = document.getElementById('toast');
         toast.style.display = 'block';
         setTimeout(function () {
             toast.style.display = 'none';
-        }, 3000); // Скрываем toast через 3 секунды (3000 миллисекунд)
+        }, 1000); // Скрываем toast через 3 секунды (3000 миллисекунд)
     }
 }
 
@@ -45,8 +46,6 @@ ymaps.ready(function () {
         // Если нет, то просто ничего не будем делать.
         return;
     }
-
-    search()
     loadNewPanorama()
 });
 function loadNewPanorama() {
