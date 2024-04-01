@@ -62,7 +62,7 @@ function loadNewPanorama() {
 
 function search() {
    randomLat = 59.95841275 + (Math.random() - 0.5) * 0.22; // Где 0.2 - широта диапазона
-   randomLng = 30.33671075 + (Math.random() - 0.5) * 0.2; // Где 0.15 - долгота диапазона
+   randomLng = 30.33671075 + (Math.random() - 0.5) * 0.22; // Где 0.15 - долгота диапазона
 }
 function addMarker(map) {
     var coords = [randomLat, randomLng];
