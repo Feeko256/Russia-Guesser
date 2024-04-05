@@ -32,7 +32,7 @@
         }
 
         #map {
-            position: fixed;
+            position: absolute;
             bottom: 20px;
             right: 20px;
             width: 300px;
@@ -50,20 +50,37 @@
         }
 
         #map:hover {
+            position: absolute;
             transform: scale(2);
+            
             /* Увеличиваем карту при наведении */
             opacity: 1;
             /* Устанавливаем полную прозрачность при наведении */
         }
+
         .marker-button,
         .panorama-button {
             position: absolute;
             top: 10px;
             right: 10px;
-            z-index: 10000; /* Установите высокий z-index, чтобы кнопка была поверх панорамы */
+            z-index: 10000;
+            /* Установите высокий z-index, чтобы кнопки были поверх панорамы */
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Полупрозрачный белый цвет */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            /* Плавное изменение цвета при наведении */
         }
+
+        .marker-button:hover,
+        .panorama-button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
         .panorama-button {
-            top: 50px; /* Сдвигаем вниз, чтобы кнопки не находились друг над другом */
+            top: 50px;
         }
     </style>
 
@@ -72,6 +89,7 @@
     <div id="map"></div>
     <button class="marker-button" onclick="addMarker(myMap)">Проверка местоположения!</button>
     <button class="panorama-button" onclick="loadNewPanorama()">Перейти к следующей панораме!</button>
+    
 </head>
 
 <body>
